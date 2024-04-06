@@ -29,7 +29,7 @@ resource "helm_release" "loadbalancer_controller" {
 
   set {
     name  = "vpcId"
-    value = data.terraform_remote_state.eks.outputs.vpc_id
+    value = data.terraform_remote_state.vpc.outputs.vpc_id
   }
 
   set {
