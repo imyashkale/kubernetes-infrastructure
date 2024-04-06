@@ -1,5 +1,5 @@
 locals {
-  name                            = "${var.application_name}-${var.enviroment}"
+  name                            = ""
   oidc_provider_arn               = data.terraform_remote_state.eks.outputs.aws_iam_openid_connect_provider_arn
   oidc_provider_arn_extracted_arn = data.terraform_remote_state.eks.outputs.aws_iam_openid_connect_provider_extract_from_arn
 }
