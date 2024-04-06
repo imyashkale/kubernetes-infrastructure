@@ -11,5 +11,5 @@ resource "helm_release" "argocd" {
   version    = "5.27.3"
   namespace  = "argocd-${var.application_name}-${var.enviroment}"
   timeout    = "1200"
-  values     = [templatefile("${module.path}/configurations/argocd/install.yaml", {})]
+  values     = [templatefile("./configurations/argocd/install.yaml", {})]
 }
