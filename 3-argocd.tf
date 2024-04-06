@@ -9,7 +9,7 @@ resource "helm_release" "argocd" {
   chart      = "argo-cd"
   repository = "https://argoproj.github.io/argo-helm"
   version    = "5.27.3"
-  namespace  = "argocd-${var.application_name}-${var.enviroment}"
+  namespace  = "argocd"
   timeout    = "1200"
   values     = [templatefile("./configurations/argocd/install.yaml", {})]
 }
