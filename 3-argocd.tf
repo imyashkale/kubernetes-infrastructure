@@ -1,6 +1,6 @@
 resource "kubernetes_namespace" "argocd" {
   metadata {
-    name = "argocd-${var.application_name}-${var.enviroment}"
+    name = "argocd"
   }
 }
 
