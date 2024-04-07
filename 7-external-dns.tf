@@ -74,6 +74,12 @@ output "externaldns_iam_role_arn" {
   value       = aws_iam_role.externaldns_iam_role.arn
 }
 
+resource "kubernetes_namespace" "external_dns" {
+  metadata {
+    name = "external-dns"
+  }
+}
+
 resource "helm_release" "external_dns" {
   depends_on = [aws_iam_role.externaldns_iam_role]
   name       = "external-dns"
@@ -81,7 +87,7 @@ resource "helm_release" "external_dns" {
   repository = "https://kubernetes-sigs.github.io/external-dns/"
   chart      = "external-dns"
 
-  namespace = "external-dns"
+  namespace = kubernetes_namespace.external_dns.metadata[0].name
 
   set {
     name  = "image.repository"
