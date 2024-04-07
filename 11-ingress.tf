@@ -26,7 +26,7 @@ resource "kubernetes_ingress_v1" "ingress" {
   }
 
   spec {
-    ingress_class_name = "aws-ingress-class" # Ingress Class     
+    ingress_class_name = "aws-ingress-class"
     rule {
       http {
         path {
