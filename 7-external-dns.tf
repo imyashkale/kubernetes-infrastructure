@@ -33,11 +33,9 @@ output "externaldns_iam_policy_arn" {
   value = aws_iam_policy.externaldns_iam_policy.arn
 }
 
-# Resource: Create IAM Role 
 resource "aws_iam_role" "externaldns_iam_role" {
   name = "${local.name}-externaldns-iam-role"
 
-  # Terraform's "jsonencode" function converts a Terraform expression result to valid JSON syntax.
   assume_role_policy = jsonencode({
     Version = "2012-10-17"
     Statement = [
@@ -51,7 +49,7 @@ resource "aws_iam_role" "externaldns_iam_role" {
         Condition = {
           StringEquals = {
             "${data.terraform_remote_state.eks.outputs.aws_iam_openid_connect_provider_extract_from_arn}:aud" : "sts.amazonaws.com",
-            "${data.terraform_remote_state.eks.outputs.aws_iam_openid_connect_provider_extract_from_arn}:sub" : "system:serviceaccount:default:external-dns"
+            "${data.terraform_remote_state.eks.outputs.aws_iam_openid_connect_provider_extract_from_arn}:sub" : "system:serviceaccount:external-dns:external-dns"
           }
         }
       },
