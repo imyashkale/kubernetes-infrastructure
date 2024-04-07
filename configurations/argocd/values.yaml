@@ -1,0 +1,11 @@
+global:
+  image:
+    tag: "v2.6.6"
+server:
+  extraArgs:
+    - --insecure
+  service:
+    type: NodePort
+    annotations:
+      nginx.ingress.kubernetes.io/rewrite-target: /
+      alb.ingress.kubernetes.io/healthcheck-path: /
