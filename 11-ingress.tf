@@ -38,7 +38,7 @@ resource "kubernetes_ingress_v1" "ingress" {
               }
             }
           }
-          path      = "/argocd"
+          path      = "/"
           path_type = "Prefix"
         }
       }
