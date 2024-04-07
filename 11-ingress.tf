@@ -38,16 +38,8 @@ resource "kubernetes_ingress_v1" "ingress" {
               }
             }
           }
-          path      = "/argocd"
+          path      = "/"
           path_type = "Prefix"
-        }
-      }
-    }
-    default_backend {
-      service {
-        name = "web-service"
-        port {
-          number = 80
         }
       }
     }
