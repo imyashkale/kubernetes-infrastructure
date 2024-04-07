@@ -14,6 +14,10 @@ resource "kubernetes_ingress_v1" "ingress" {
       "alb.ingress.kubernetes.io/success-codes"                = 200
       "alb.ingress.kubernetes.io/healthy-threshold-count"      = 2
       "alb.ingress.kubernetes.io/unhealthy-threshold-count"    = 2
+
+      "alb.ingress.kubernetes.io/listen-ports"    = jsonencode([{ "HTTPS" = 443 }, { "HTTP" = 80 }])
+      "alb.ingress.kubernetes.io/certificate-arn" = "${aws_acm_certificate.acm_cert.arn}"
+      "alb.ingress.kubernetes.io/ssl-redirect"    = 443
     }
   }
 
