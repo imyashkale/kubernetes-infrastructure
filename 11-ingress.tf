@@ -43,14 +43,6 @@ resource "kubernetes_ingress_v1" "ingress" {
         }
       }
     }
-    default_backend {
-      service {
-        name = "argocd-server"
-        port {
-          number = 80
-        }
-      }
-    }
   }
 }
 
