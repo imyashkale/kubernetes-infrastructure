@@ -20,7 +20,7 @@ resource "kubernetes_manifest" "ultra" {
       }
       destination = {
         server    = "https://kubernetes.default.svc"
-        namespace = "myapp"
+        namespace = "apps"
       }
       syncPolicy = {
         syncOptions = ["CreateNamespace=true"]
