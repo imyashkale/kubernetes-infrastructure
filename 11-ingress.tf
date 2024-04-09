@@ -48,6 +48,8 @@ resource "kubernetes_ingress_v1" "router" {
       }
     }
   }
+
+  depends_on = [helm_release.argocd]
 }
 
 
