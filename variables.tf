@@ -23,6 +23,13 @@ variable "argocd_apps" {
       repoURL        = "https://github.com/imyashkale/homepage-k8s-configs.git"
       targetRevision = "HEAD"
       path           = "dev"
+    },
+    {
+      name           = "eks-ebs-example"
+      project        = "default"
+      repoURL        = "https://github.com/imyashkale/eks-ebs-example.git"
+      targetRevision = "HEAD"
+      path           = "dev"
     }
   ]
 }
