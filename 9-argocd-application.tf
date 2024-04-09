@@ -1,19 +1,22 @@
-resource "kubernetes_manifest" "ultra" {
+resource "kubernetes_manifest" "argocd" {
+
+  for_each = {
+    for app in var.argocd_apps : app.name => app
+  }
 
   manifest = {
     apiVersion = "argoproj.io/v1alpha1"
     kind       = "Application"
     metadata = {
-      name      = "${local.name}"
-      namespace = "argocd"
+      name      = "${each.value.name}"
+      namespace = kubernetes_namespace_v1.argocd.metadata[0].name
     }
     spec = {
-      project = "default"
-
+      project = each.value.project
       source = {
-        repoURL        = "https://github.com/imyashkale/terraform-k8s-services.git"
-        targetRevision = "HEAD"
-        path           = "dev"
+        repoURL        = each.value.repoURL
+        targetRevision = each.value.targetRevision
+        path           = each.value.path
         directory = {
           recurse : true
         }
@@ -24,7 +27,6 @@ resource "kubernetes_manifest" "ultra" {
       }
       syncPolicy = {
         syncOptions = ["CreateNamespace=true"]
-
         automated = {
           selfHeal = true
           prune    = true
@@ -32,4 +34,5 @@ resource "kubernetes_manifest" "ultra" {
       }
     }
   }
+  depends_on = [helm_release.argocd]
 }

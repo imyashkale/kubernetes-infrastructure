@@ -13,3 +13,16 @@ variable "enviroment" {
   type        = string
 }
 
+variable "argocd_apps" {
+  description = "ArgoCD Application Configurations"
+  type        = list(map(string))
+  default = [
+    {
+      name           = "homepage"
+      project        = "ultra"
+      repoURL        = "https://github.com/imyashkale/homepage-k8s-configs.git"
+      targetRevision = "HEAD"
+      path           = "dev"
+    }
+  ]
+}
