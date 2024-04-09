@@ -19,7 +19,7 @@ variable "argocd_apps" {
   default = [
     {
       name           = "homepage"
-      project        = "ultra"
+      project        = "default"
       repoURL        = "https://github.com/imyashkale/homepage-k8s-configs.git"
       targetRevision = "HEAD"
       path           = "dev"
