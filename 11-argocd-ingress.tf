@@ -1,7 +1,7 @@
 resource "kubernetes_ingress_v1" "router" {
   metadata {
     name      = "argocd"
-    namespace = "argocd"
+    namespace = kubernetes_namespace_v1.argocd.metadata[0].name
     annotations = {
       "alb.ingress.kubernetes.io/load-balancer-name"           = "${local.name}"
       "alb.ingress.kubernetes.io/scheme"                       = "internet-facing"
@@ -29,7 +29,7 @@ resource "kubernetes_ingress_v1" "router" {
   }
 
   spec {
-    ingress_class_name = "aws-ingress-class"
+    ingress_class_name = kubernetes_ingress_class_v1.ingress_class_default.metadata[0].name
     rule {
       host = "argocd.imyashkale.com"
       http {
@@ -49,7 +49,8 @@ resource "kubernetes_ingress_v1" "router" {
     }
   }
 
-  depends_on = [helm_release.argocd]
+  // using argocd-server service which is deployed by helm chart called argocd
+  depends_on = [helm_release.argocd, helm_release.loadbalancer_controller]
 }
 
 

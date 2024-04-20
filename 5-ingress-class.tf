@@ -1,5 +1,7 @@
 resource "kubernetes_ingress_class_v1" "ingress_class_default" {
+  
   depends_on = [helm_release.loadbalancer_controller]
+
   metadata {
     name = "aws-ingress-class"
     annotations = {

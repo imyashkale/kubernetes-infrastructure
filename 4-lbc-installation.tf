@@ -41,7 +41,6 @@ resource "helm_release" "loadbalancer_controller" {
     name  = "clusterName"
     value = data.terraform_remote_state.eks.outputs.cluster_id
   }
-
 }
 
 

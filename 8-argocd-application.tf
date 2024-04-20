@@ -34,5 +34,6 @@ resource "kubernetes_manifest" "argocd" {
       }
     }
   }
+  
   depends_on = [helm_release.argocd]
 }
