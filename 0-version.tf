@@ -14,12 +14,13 @@ terraform {
     }
   }
 
-  backend "s3" {
-    bucket = "infrastructure-statefile"
-    key    = "infrastructure/k8-infrastructure/statefile.tfstate"
-    region = "ap-south-1"
-
-    dynamodb_table = "infrastructure-state-lock"
+  backend "remote" {
+    cloud {
+      organization = "ULTRA"
+      workspaces {
+        name = "kubernetes-infrastructure"
+      }
+    }
   }
 }
 

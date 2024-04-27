@@ -1,20 +1,22 @@
 # VPC required to be created.
 data "terraform_remote_state" "vpc" {
-  backend = "s3"
+  backend = "remote"
   config = {
-    bucket = "infrastructure-statefile"
-    key    = "infrastructure/vpc/statefile"
-    region = "ap-south-1"
+    organization = "ULTRA"
+    workspaces = {
+      name = "networking-layer"
+    }
   }
 }
 
 # EKS Cluster required to be created.
 data "terraform_remote_state" "eks" {
-  backend = "s3"
+  backend = "remote"
   config = {
-    bucket = "infrastructure-statefile"
-    key    = "infrastructure/eks/statefile"
-    region = "ap-south-1"
+    organization = "ULTRA"
+    workspaces = {
+      name = "eks-cluster-infrastructure"
+    }
   }
 }
 
