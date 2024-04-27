@@ -9,7 +9,7 @@ resource "kubernetes_manifest" "argocd" {
     kind       = "Application"
     metadata = {
       name      = "${each.value.name}"
-      namespace = kubernetes_namespace_v1.argocd.metadata[0].name
+      namespace = "argocd"
     }
     spec = {
       project = each.value.project
