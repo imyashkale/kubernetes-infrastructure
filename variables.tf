@@ -25,9 +25,9 @@ variable "argocd_apps" {
       path           = "dev"
     },
     {
-      name           = "eks-ebs-example"
+      name           = "backstage"
       project        = "default"
-      repoURL        = "https://github.com/imyashkale/eks-ebs-example.git"
+      repoURL        = "https://github.com/imyashkale/backstage-deployment.git"
       targetRevision = "HEAD"
       path           = "dev"
     }
