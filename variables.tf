@@ -53,14 +53,14 @@ variable "argocd_apps" {
   type        = list(map(string))
   default = [
     {
-      name           = "Homepage"
+      name           = "homepage"
       project        = "default"
       repoURL        = "https://github.com/imyashkale/homepage-k8s-configs.git"
       targetRevision = "HEAD"
       path           = "dev"
     },
     {
-      name           = "Backstage"
+      name           = "backstage"
       project        = "default"
       repoURL        = "https://github.com/imyashkale/backstage-deployment.git"
       targetRevision = "HEAD"
