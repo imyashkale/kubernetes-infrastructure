@@ -12,6 +12,14 @@ terraform {
       source  = "hashicorp/helm"
       version = "2.13.0"
     }
+    hcp = {
+      source  = "hashicorp/hcp"
+      version = "0.87.1"
+    }
+    random = {
+      source  = "hashicorp/random"
+      version = "3.6.1"
+    }
   }
 
   backend "remote" {
@@ -22,6 +30,10 @@ terraform {
       }
     }
   }
+}
+
+provider "hcp" {
+  # Configuration options
 }
 
 

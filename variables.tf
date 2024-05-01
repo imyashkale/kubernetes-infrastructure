@@ -13,19 +13,54 @@ variable "enviroment" {
   type        = string
 }
 
+variable "github_client_id" {
+  description = "The GitHub Client Id"
+  type        = string
+  sensitive   = true
+}
+
+variable "github_client_secret" {
+  description = "The GitHub Client Secret"
+  type        = string
+  sensitive   = true
+}
+
+variable "github_token" {
+  description = "The GitHub Token"
+  type        = string
+  sensitive   = true
+}
+
+variable "backstage_db_password" {
+  description = "The Backstage DB Password"
+  type        = string
+  sensitive   = true
+}
+
+variable "backstage_db_user" {
+  description = "The Backstage DB User"
+  type        = string
+  sensitive   = true
+}
+
+variable "backend_secret" {
+  description = "The Backend Secret"
+  type        = string
+  sensitive   = true
+}
 variable "argocd_apps" {
   description = "ArgoCD Application Configurations"
   type        = list(map(string))
   default = [
     {
-      name           = "homepage"
+      name           = "Homepage"
       project        = "default"
       repoURL        = "https://github.com/imyashkale/homepage-k8s-configs.git"
       targetRevision = "HEAD"
       path           = "dev"
     },
     {
-      name           = "backstage"
+      name           = "Backstage"
       project        = "default"
       repoURL        = "https://github.com/imyashkale/backstage-deployment.git"
       targetRevision = "HEAD"

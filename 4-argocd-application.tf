@@ -34,4 +34,5 @@ resource "kubernetes_manifest" "argocd" {
       }
     }
   }
+  depends_on = [null_resource.secrets]
 }
