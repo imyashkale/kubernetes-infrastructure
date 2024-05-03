@@ -55,16 +55,16 @@ variable "argocd_apps" {
     {
       name           = "homepage"
       project        = "default"
-      repoURL        = "https://github.com/imyashkale/homepage-k8s-configs.git"
+      repoURL        = "https://github.com/imyashkale/argocd-applications.git"
       targetRevision = "HEAD"
-      path           = "dev"
+      path           = "homepage"
     },
     {
       name           = "backstage"
       project        = "default"
-      repoURL        = "https://github.com/imyashkale/backstage-deployment.git"
+      repoURL        = "https://github.com/imyashkale/bargocd-applications.git"
       targetRevision = "HEAD"
-      path           = "dev"
+      path           = "backstage"
     }
   ]
 }
