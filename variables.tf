@@ -62,7 +62,7 @@ variable "argocd_apps" {
     {
       name           = "backstage"
       project        = "default"
-      repoURL        = "https://github.com/imyashkale/bargocd-applications.git"
+      repoURL        = "https://github.com/imyashkale/argocd-applications.git"
       targetRevision = "HEAD"
       path           = "backstage"
     }
