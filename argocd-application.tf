@@ -1,7 +1,7 @@
 resource "kubernetes_manifest" "argocd" {
 
   for_each = {
-    for app in var.argocd_apps : app.name => app
+    for app in var.argocd_apps : app.name => app if app.deploy
   }
 
   manifest = {

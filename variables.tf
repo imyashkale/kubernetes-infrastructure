@@ -53,6 +53,7 @@ variable "argocd_apps" {
   type        = list(map(string))
   default = [
     {
+      deploy         = false
       name           = "homepage"
       project        = "default"
       repoURL        = "https://github.com/imyashkale/argocd-applications.git"
@@ -60,6 +61,7 @@ variable "argocd_apps" {
       path           = "homepage"
     },
     {
+      deploy         = false
       name           = "backstage"
       project        = "default"
       repoURL        = "https://github.com/imyashkale/argocd-applications.git"
