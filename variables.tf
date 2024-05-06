@@ -61,7 +61,7 @@ variable "argocd_apps" {
       path           = "homepage"
     },
     {
-      deploy         = false
+      deploy         = true
       name           = "backstage"
       project        = "default"
       repoURL        = "https://github.com/imyashkale/argocd-applications.git"
